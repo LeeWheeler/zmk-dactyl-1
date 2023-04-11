@@ -53,6 +53,17 @@
         };
     };
     
+    macros {
+        ZMK_MACRO(inv_qm,
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp KP_N1 &kp KP_N6 &kp KP_N8>
+                , <&macro_release &kp LALT>;
+        )
+    };
+    
 
     behaviors {
      //   td_mt_ls: tap_dance_mod_tap {
