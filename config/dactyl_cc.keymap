@@ -103,7 +103,7 @@
                                                   &kp TAB  &kp ESC   
                                                 &kp LCTRL  &kp BSPC  
                                                                              &kp RET    &mo RAISE           
-                                                                             &kp LPAR   &kp RPAR   
+                                                                             &kp LPAR   &kp RPAR  
             >;
         };
         
@@ -128,11 +128,11 @@
       
      RAISE {
             bindings = <
-&kp F11       &none        &none     &none     &none     &none           &none       &none     &none       &none       &none          &kp C_MUTE
-&none         &kp N1       &kp N2    &kp N3    &kp N4    &kp N5          &kp N6      &kp N7    &kp N8      &kp N9      &kp N0         &kp C_VOL_UP
-&none         &none        &none     &none     &none     &none           &kp PG_UP   &kp HOME  &kp UP      &kp END     &none          &kp C_VOL_DN
-&sl SYMBOL    &none        &none     &none     &none     &none           &kp PG_DN   &kp LEFT  &kp DOWN    &kp RIGHT   &none          &kp C_MUTE
-&kp GRAVE     &kp TILDE2   &none     &none     &none     &none           &none       &none     &kp LBRC    &kp RBRC    &KP ASTERISK   &KP SLASH
+&kp F11       &none        &none     &none     &none     &none           &none       &none     &none       &none       &none     &kp C_MUTE
+&none         &kp N1       &kp N2    &kp N3    &kp N4    &kp N5          &kp N6      &kp N7    &kp N8      &kp N9      &kp N0    &kp C_VOL_UP
+&none         &none        &none     &none     &none     &none           &kp PG_UP   &kp HOME  &kp UP      &kp END     &none     &kp C_VOL_DN
+&sl SYMBOL    &none        &none     &none     &none     &none           &kp PG_DN   &kp LEFT  &kp DOWN    &kp RIGHT   &none     &kp C_MUTE
+&kp GRAVE     &kp TILDE2   &none     &none     &none     &none           &none       &none     &kp LBRC    &kp RBRC    &none     &none
                                        &kp NON_US_HASH   &kp TILDE2       
                                                 &kp N3   &kp N4 
                                                                          &kp F1    &kp F2  
@@ -140,7 +140,7 @@
                                                 &kp F5   &kp F6 
                                                 &kp F7   &kp F8  
                                                                          &kp F9    &kp F10 
-                                                                         &kp PLUS  &kp MINUS
+                                                                         &kp LBRC  &kp RBRC
             >;
         };
 
