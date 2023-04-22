@@ -123,7 +123,8 @@
                                                  &kp TAB     &kp ESC 
                                                  &kp LCTRL   &kp BSPC    
                                                                              &kp EQUAL     &kp EXCL                               
-                                                                             &kp LBRC      &kp RBRC               >;
+                                                                             &kp LBRC      &kp RBRC            
+	    >;
         };
         
       
