@@ -111,13 +111,13 @@
 		
     LOWER {
             bindings = <
-&kp GRAVE   &none       &none       &none        &none       &kp PSCRN       &none        &none      &none             &none              &none     &kp C_MUTE
+&kp GRAVE   &none       &none       &none        &none       &kp PSCRN       &bt BT_CLR   &none      &none             &none              &none     &kp C_MUTE
 &kp MINUS   &kp N1      &kp N2      &kp N3       &kp N4      &kp N5          &kp N6       &kp N7     &kp N8            &kp N9             &kp N0    &kp C_VOL_UP
 &kp LT      &none       &kp LC(W)   &kp LC(J)    &kp LC(Y)   &kp LS(LC(T))   &kp PG_UP    &kp HOME   &kp UP            &kp END            &kp P     &kp C_VOL_DN
 &kp CAPS    &kp LC(A)   &kp LC(S)   &kp LC(D)    &kp LC(F)   &kp LC(N)       &kp PG_DN    &kp LEFT   &kp DOWN          &kp RIGHT          &kp L     &kp C_MUTE 
 &kp CAPS    &kp LC(Z)   &kp LC(X)   &kp LC(C)    &kp LC(V)   &kp ESC         &kp INS      &kp M      &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))  &kp LBKT  &kp RBKT
                                                  &kp NUBS    &kp AMPS          
-                                                 &kp N3      &bt BT_CLR 
+                                                 &mo LOWER   &kp SPACE 
                                                                              &kp PRCNT     &kp ASTRK    
                                                                              &kp CARET     &kp FSLH          
                                                  &kp TAB     &kp ESC 
