@@ -114,7 +114,7 @@
 &kp MINUS   &kp N1      &kp N2      &kp N3       &kp N4      &kp N5          &kp N6       &kp N7    &kp N8            &kp N9             &kp N0    &kp C_VOL_UP
 &kp LT      &none       &kp LC(W)   &kp LC(J)    &kp LC(Y)   &kp LS(LC(T))   &kp PG_UP    &kp HOME  &kp UP            &kp END            &kp P     &kp C_VOL_DN
 &kp CAPS    &kp LC(A)   &kp LC(S)   &kp LC(D)    &kp LC(F)   &kp LC(N)       &kp PG_DN    &kp LEFT  &kp DOWN          &kp RIGHT          &kp L     &kp C_MUTE 
-&kp CAPS    &kp LC(Z)   &kp LC(X)   &kp LC(C)    &kp LC(V)   &kp ESC         &kp N        &kp M     &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))  &kp M     &kp M
+&kp CAPS    &kp LC(Z)   &kp LC(X)   &kp LC(C)    &kp LC(V)   &kp ESC         &kp N        &kp M     &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))  &kp LBKT  &kp RBKT
                                     &kp LS(NON_US_BSLH)      &kp AMPS          
                                                  &kp N3      &bt BT_CLR 
                                                                              &kp PRCNT     &kp ASTRK    
