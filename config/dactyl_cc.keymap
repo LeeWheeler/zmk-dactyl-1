@@ -103,7 +103,7 @@
                                                   &kp TAB  &kp ESC   
                                                 &kp LCTRL  &kp BSPC  
                                                                              &kp RET    &mo RAISE           
-                                                                             &kp LPAR   &kp RPAR  
+                                                                             &kp LPAR   &kp RPAR   
             >;
         };
         
