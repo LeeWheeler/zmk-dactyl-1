@@ -4,9 +4,9 @@
 #include <dt-bindings/zmk/outputs.h>
 
 // #############         LAYERS         #################
-#define SYM_L 1
-#define NAV_L 2
-#define NAV2_L 3
+#define SYM_L   1
+#define NAV_L   2
+#define NAV2_L  3
 //#define OTHER_L 4
 
 #define DEFAULT 0
@@ -25,9 +25,9 @@
 
 // Generic bindings
 #define KILL_WINDOW  LA(F4)
-#define MAXIMIZE  LG(UP)
-#define MINIMIZE  LG(DOWN)
-#define UN_MINIMIZE     LG(LC(N))
+#define MAXIMIZE     LG(UP)
+#define MINIMIZE     LG(DOWN)
+#define UN_MINIMIZE  LG(LC(N))
 
 &mt {
     flavor = "hold-preferred";
@@ -97,7 +97,7 @@
     &kp LBKT          &kp Q     &kp W    &kp E    &kp R    &kp T             &kp Y        &kp U      &kp I         &kp O        &kp P         &kp RBKT
     &kp NON_US_BSLH   &kp A     &kp S    &kp D    &kp F    &kp G             &kp H        &kp J      &kp K         &kp L        &kp SEMI      &kp FSLH
     &kp LSHIFT        &kp Z     &kp X    &kp C    &kp V    &kp B             &kp N        &kp M      &kp COMMA     &kp DOT      &kp FSLH      &kp RSHIFT
-                                         &kp SINGLE_QUOTE  &kp LS(N2)   
+                                         	  &kp SQT  &kp DQT   
                                                 &mo LOWER  &kp SPACE   
                                                                              &kp DEL      &kp LALT  
                                                                              &kp K_APP    &kp LG(TAB)  
@@ -111,12 +111,12 @@
 		
     LOWER {
             bindings = <
-&kp GRAVE   &none       &none       &none        &none       &none           &none        &none      &none             &none              &none     &kp C_MUTE
+&kp GRAVE   &none       &none       &none        &none       &kp PSCRN       &none        &none      &none             &none              &none     &kp C_MUTE
 &kp MINUS   &kp N1      &kp N2      &kp N3       &kp N4      &kp N5          &kp N6       &kp N7     &kp N8            &kp N9             &kp N0    &kp C_VOL_UP
 &kp LT      &none       &kp LC(W)   &kp LC(J)    &kp LC(Y)   &kp LS(LC(T))   &kp PG_UP    &kp HOME   &kp UP            &kp END            &kp P     &kp C_VOL_DN
 &kp CAPS    &kp LC(A)   &kp LC(S)   &kp LC(D)    &kp LC(F)   &kp LC(N)       &kp PG_DN    &kp LEFT   &kp DOWN          &kp RIGHT          &kp L     &kp C_MUTE 
 &kp CAPS    &kp LC(Z)   &kp LC(X)   &kp LC(C)    &kp LC(V)   &kp ESC         &kp INS      &kp M      &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))  &kp LBKT  &kp RBKT
-                                    &kp LS(NON_US_BSLH)      &kp AMPS          
+                                                 &kp NUBS    &kp AMPS          
                                                  &kp N3      &bt BT_CLR 
                                                                              &kp PRCNT     &kp ASTRK    
                                                                              &kp CARET     &kp FSLH          
