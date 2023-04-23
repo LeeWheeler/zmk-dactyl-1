@@ -66,23 +66,22 @@
     };
     
 
-    behaviors {    
-        td_mt_ls: tap_dance_mod_tap {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_LSHIFT";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
-        };
+    behaviors {
+     //   td_mt_ls: tap_dance_mod_tap {
+     //       compatible = "zmk,behavior-tap-dance";
+     //       label = "TAP_DANCE_LSHIFT";
+     //       #binding-cells = <0>;
+     //       tapping-term-ms = <200>;
+     //       bindings = <&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
+     //   };
         
-        td_mt_rs: tap_dance_mod_tap {
-           compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_RSHIFT";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mt PRINTSCREEN ESC>, <&kp TAB>;
-        };
-        
+     //   td_mt_rs: tap_dance_mod_tap {
+     //       compatible = "zmk,behavior-tap-dance";
+     //       label = "TAP_DANCE_RSHIFT";
+     //       #binding-cells = <0>;
+     //       tapping-term-ms = <200>;
+     //       bindings = <&mt RSHIFT CAPSLOCK>, <&kp RCTRL>;
+     //   };            
     };
 
     
