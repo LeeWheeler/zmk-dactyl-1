@@ -117,7 +117,7 @@
 &kp CAPS    &kp LC(A)   &kp LC(S)       &kp LC(D)    &kp LC(F)   &kp LC(N)       &kp PG_DN    &kp LEFT   &kp DOWN        &kp RIGHT      &kp COLON  &kp LS(FSLH)
 &kp CAPS    &kp LC(Z)   &kp LC(X)       &kp LC(C)    &kp LC(V)   &kp ESC         &kp INS      &kp M      &kp LS(COMMA)   &kp LS(DOT)    &kp PLUS   &kp MINUS
                                                      &kp AMPS    &kp LS(NON_US_BSLH)
-                                                     &mo LOWER   &kp SPACE
+                                                     &kp TAB     &kp SPACE
                                                                                  &kp LS(N3)   &kp CARET
                                                                                  &kp DOLLAR   &kp PRCNT
                                                      &kp TAB     &kp ESC
