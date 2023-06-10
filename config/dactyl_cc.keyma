@@ -119,14 +119,14 @@
     &kp LSHIFT        &kp Z     &kp X    &kp C    &kp V    &kp B             &kp N        &kp M      &kp COMMA     &kp DOT      &kp FSLH      &kp RSHIFT
                                          &kp SINGLE_QUOTE  &kp LS(N2)
                                                 &mo LOWER  &kp SPACE
-                                                                             &kp DEL      &kp LALT
+                                                                             &mo LOWER    &kp LALT
                                                                              &kp K_APP    &kp LG(TAB)
                                                   &kp TAB  &kp ESC
                                                 &kp LCTRL  &kp BSPC
                                                                              &kp RET      &mo RAISE
                                                                              &kp LPAR     &kp RPAR
             >;
-        };	
+        };
         
 		
     LOWER {
