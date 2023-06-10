@@ -1,133 +1,56 @@
-#include <behaviors.dtsi>
+#include <behaviors.dtsi>								
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-// #############      SWEDISH COMPATIBLE SPECIAL CHARACTERS        #################
-#define SE_AA LEFT_BRACKET
-#define SE_AE SQT
-#define SE_OE SEMICOLON
+// ####################################################################
+// #############  All correct and wroking 2023-06-10  #################
+// ####################################################################
 
-// #############      LAYERS        #################
-#define SYM_L 1
-#define NAV_L 2
-#define NAV2_L 3
+// #############         LAYERS         #################
+
+#define SYM_L   1
+#define NAV_L   2
+#define NAV2_L  3
 //#define OTHER_L 4
 
-// Desktop and tab navigation shortcuts
+#define DEFAULT 0
+#define LOWER   1
+#define RAISE   2
+#define SYMBOL  3
+
+// Desktop and tab navigation shortcuts		
 #define DESKTOP_LT   LC(LG(LEFT))
-#define DESKTOP_RT   LC(LG(RIGHT))
+#define DESKTOP_RT   LC(LG(RIGHT))					
 #define WINDOW_LT    LA(LS(TAB))
 #define WINDOW_RT    LA(TAB)
 #define TAB_LT       LC(LS(TAB))
 #define TAB_RT       LC(TAB)
+// NOT USED  &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))
 
 // Generic bindings
 #define KILL_WINDOW  LA(F4)
-#define MAXIMIZE  LG(UP)
-#define MINIMIZE  LG(DOWN)
-
-// Linux specific navigation 
-#define DESKTOP_PREV   LG(ESC)
-#define DESKTOP_SPEC   LG(O)
-
-#define WINDOW_1   LG(NUMBER_1)
-#define WINDOW_2   LG(NUMBER_2)
-#define WINDOW_3   LG(NUMBER_3)
-#define WINDOW_4   LG(NUMBER_4)
-#define WINDOW_5   LG(NUMBER_5)
-#define WINDOW_6   LG(NUMBER_6)
-#define WINDOW_7   LG(NUMBER_7)
-#define WINDOW_8   LG(NUMBER_8)
-#define WINDOW_9   LG(NUMBER_9)
-
-#define SEND_W_TO_1   LG(LS(NUMBER_1))
-#define SEND_W_TO_2   LG(LS(NUMBER_2))
-#define SEND_W_TO_3   LG(LS(NUMBER_3))
-#define SEND_W_TO_4   LG(LS(NUMBER_4))
-#define SEND_W_TO_5   LG(LS(NUMBER_5))
-#define SEND_W_TO_6   LG(LS(NUMBER_6))
-#define SEND_W_TO_7   LG(LS(NUMBER_7))
-#define SEND_W_TO_8   LG(LS(NUMBER_8))
-#define SEND_W_TO_9   LG(LS(NUMBER_9))
-
-#define ROT_LAYOUT          LG(SPACE)
-#define TOGGLE_FLOATING     LG(LC(SPACE))
-#define MOVE_TO_MASTER      LG(LC(RET))
-#define ROTATE_WINDOW_LT    LG(LS(J))
-#define ROTATE_WINDOW_RT    LG(LS(K))
-
-#define UN_MINIMIZE     LG(LC(N))
-
-#define SHRINK_WIDTH    LG(LA(H))
-#define EXPAND_WIDTH    LG(LA(L))
-#define INC_COL         LG(LC(H))
-#define DEC_COL         LG(LC(L))
-#define INC_MASTER      LG(LS(H))
-#define DEC_MASTER      LG(LS(L))
+#define MAXIMIZE     LG(UP)
+#define MINIMIZE     LG(DOWN)
+#define UN_MINIMIZE  LG(LC(N))
 
 &mt {
+    flavor = "hold-preferred";
     tapping-term-ms = <500>;
 };
 
+&lt {
+    flavor = "balanced";
+    tapping-term-ms = <150>;
+};
 
  &sl {
      release-after-ms = <2000>;
  };
 
+
+
 / {
-    macros {
-        uppercase_G: uppercase_G {
-            label = "uppercase_G";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp G>
-                , <&macro_release &kp LSHFT>
-                ;
-      };
-    };
-
-    combos {
-        compatible = "zmk,combos";
-        combo_q {
-            timeout-ms = <50>;
-            key-positions = <5 6>;
-            bindings = <&kp Q>;
-        };
-        combo_z {
-            timeout-ms = <50>;
-            key-positions = <5 7>;
-            bindings = <&kp Z>;
-        };
-        combo_aa {
-            timeout-ms = <50>;
-            key-positions = <6 9>;
-            bindings = <&kp SE_AA>;
-        };
-        combo_ae {
-            timeout-ms = <50>;
-            key-positions = <7 9>;
-            bindings = <&kp SE_AE>;
-        };
-        combo_oe {
-            timeout-ms = <50>;
-            key-positions = <8 9>;
-            bindings = <&kp SE_OE>;
-        };
-        combo_return {
-            timeout-ms = <50>;
-            key-positions = <16 17>;
-            bindings = <&kp RETURN>;
-        };
-        combo_esc {
-            timeout-ms = <50>;
-            key-positions = <17 18>;
-            bindings = <&kp ESCAPE>;
-        };
-    };
-
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
@@ -135,17 +58,35 @@
             then-layer = <4>;
         };
     };
+    
+    macros {
+        ZMK_MACRO(inv_qm,
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp KP_N1 &kp KP_N6 &kp KP_N8>
+                , <&macro_release &kp LALT>;
+        )
+    };
+    
 
     behaviors {
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
+     //   td_mt_ls: tap_dance_mod_tap {
+     //       compatible = "zmk,behavior-tap-dance";
+     //       label = "TAP_DANCE_LSHIFT";
+     //       #binding-cells = <0>;
+     //       tapping-term-ms = <200>;
+     //       bindings = <&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
+     //   };
+        
+     //   td_mt_rs: tap_dance_mod_tap {
+     //       compatible = "zmk,behavior-tap-dance";
+     //       label = "TAP_DANCE_RSHIFT";
+     //       #binding-cells = <0>;
+     //       tapping-term-ms = <200>;
+     //       bindings = <&mt RSHIFT CAPSLOCK>, <&kp RCTRL>;
+     //   };            
     };
 
     keymap {
@@ -153,62 +94,74 @@
 
         default_layer {
             bindings = <
-    &hm QUESTION EXCLAMATION     &kp G    &kp M     &kp P     &kp V                                &hm SQT DQT                          &kp J     &kp K     &hm SEMICOLON COLON     &hm BACKSLASH SLASH     
-    &hm LCTRL R     &hm LSHIFT S    &hm LGUI N     &hm LALT D     &kp B                              &hm PLUS EQUAL     &hm LALT A     &hm LGUI E     &hm LSHIFT I     &hm LCTRL H
-    &kp X     &kp F    &kp L     &kp C     &kp W                                                    &hm MINUS UNDERSCORE     &kp U     &kp O     &kp Y    &hm COMMA PERIOD 
-              &hm  LT LEFT_BRACE &hm  GT RIGHT_BRACE                                                                 &hm LEFT_BRACKET LEFT_PARENTHESIS &hm RIGHT_BRACKET RIGHT_PARENTHESIS 
-                      &sl NAV_L   &kp T       &none                  &kp DEL   &kp SPACE    &sl SYM_L 
-                      &kp TAB &kp LEFT_ARROW  &kp DOWN_ARROW        &kp UP_ARROW   &kp RIGHT_ARROW   &kp BACKSPACE
+    &kp F1             &kp F2     &kp F3    &kp F4    &kp F5      &kp F6             &kp F7       &kp F8     &kp F9        &kp F10      &kp F11       &kp F12
+    &kp MINUS          &kp N1     &kp N2    &kp N3    &kp N4      &kp N5             &kp N6       &kp N7     &kp N8        &kp N9       &kp N0        &kp EQUAL
+    &kp LBKT           &kp Q      &kp W     &kp E     &kp R       &kp T              &kp Y        &kp U      &kp I         &kp O        &kp P         &kp RBKT
+    &kp NON_US_BSLH    &kp A      &kp S     &kp D     &kp F       &kp G              &kp H        &kp J      &kp K         &kp L        &kp SEMI      &kp FSLH
+    &kp LSHIFT         &kp Z      &kp X     &kp C     &kp V       &kp B              &kp N        &kp M      &kp COMMA     &kp DOT      &kp FSLH      &kp RSHIFT
+                                           &kp SINGLE_QUOTE       &kp LS(N2)
+                                                  &mo LOWER       &kp SPACE
+                                                                                     &mo SYMBOL   &kp LALT
+                                                                                     &kp K_APP    &kp LG(TAB)
+                                                       &kp TAB    &kp ESC
+                                                       &kp LCTRL  &kp BSPC
+                                                                                     &kp RET      &mo RAISE
+                                                                                     &kp LPAR     &kp RPAR
             >;
         };
-
-sym_layer {
+	
+	LOWER {
             bindings = <
-               &kp GRAVE     &kp TILDE2       &kp PIPE     &kp CARET      &kp HASH     &kp STAR             &kp AMPS      &kp PERCENT     &kp DOLLAR     &kp AT_SIGN 
-    &kp NUMBER_1     &kp NUMBER_2    &kp NUMBER_3     &kp NUMBER_4     &none                              &none     &kp NUMBER_7     &kp NUMBER_8     &kp NUMBER_9     &kp NUMBER_0
-    &none      &kp Y          &kp D                    &kp NUMBER_5     &none                              &none     &kp NUMBER_6     &kp J     &kp K     &kp L 
-                      &none &none                                                                       &none    &none
-                      &none   &none   &none                  &trans   &trans   &none
-                      &trans   &trans   &trans                  &trans   &trans   &trans
+&kp GRAVE   &none       &kp PAUSE_BREAK &kp SLCK     &kp PSCRN   &kp PSCRN           &bt BT_CLR   &none      &none           &none          &none      &kp C_MUTE
+&kp MINUS   &kp N1      &kp N2          &kp N3       &kp N4      &kp N5              &kp N6       &kp N7     &kp N8          &kp N9         &kp N0     &kp C_VOL_UP
+&kp LT      &none       &kp LC(W)       &kp LC(J)    &kp LC(Y)   &kp LS(LC(T))       &kp PG_UP    &kp HOME   &kp UP          &kp END        &kp P      &kp C_VOL_DN
+&kp CAPS    &kp LC(A)   &kp LC(S)       &kp LC(D)    &kp LC(F)   &kp LC(N)           &kp PG_DN    &kp LEFT   &kp DOWN        &kp RIGHT      &kp COLON  &kp LS(FSLH)
+&kp CAPS    &kp LC(Z)   &kp LC(X)       &kp LC(C)    &kp LC(V)   &kp ESC             &kp INS      &kp M      &kp LS(COMMA)   &kp LS(DOT)    &kp PLUS   &kp MINUS
+                                                     &kp AMPS    &kp LS(NON_US_BSLH)
+                                                     &mo LOWER   &kp SPACE
+                                                                                     &kp LS(N3)   &kp CARET
+                                                                                     &kp DOLLAR   &kp PRCNT
+                                                     &kp TAB     &kp ESC
+                                                     &kp LCTRL   &kp BSPC
+                                                                                     &kp EXCL     &kp EQUAL
+                                                                                     &kp LBRC     &kp RBRC
             >;
         };
 
-
-        nav_layer {
+        RAISE {
             bindings = <
-                &kp WINDOW_1        &kp WINDOW_2        &kp WINDOW_3       &kp WINDOW_4          &kp WINDOW_5                                     &kp WINDOW_6     &kp WINDOW_7     &kp WINDOW_8     &kp WINDOW_9          &none
-                &kp DESKTOP_SPEC     &kp DESKTOP_PREV     &kp DESKTOP_LT      &kp DESKTOP_RT         &kp ROT_LAYOUT                                &kp KILL_WINDOW   &kp ROTATE_WINDOW_LT       &kp ROTATE_WINDOW_RT   &kp MOVE_TO_MASTER       &none
-                &kp TAB_LT     &kp TAB_RT     &kp WINDOW_LT       &kp WINDOW_RT      &kp TOGGLE_FLOATING                                          &kp MAXIMIZE       &kp MINIMIZE        &kp UN_MINIMIZE    &kp SHRINK_WIDTH     &kp EXPAND_WIDTH
-                      &none &none                                                                       &none    &none
-                                                  &sl NAV_L     &none     &none         &none     &none        &sl SYM_L
-                      &none   &none   &none                 &none   &none   &none 
-
-
+&kp F11       &none         &none      &none       &none       &none                 &none          &none          &none         &none          &none        &kp C_MUTE
+&none         &kp N1        &kp N2     &kp N3      &kp N4      &kp N5                &kp N6         &kp N7         &kp N8        &kp N9         &kp N0       &kp C_VOL_UP
+&none         &none         &none      &none       &none       &none                 &kp PG_UP      &kp HOME       &kp UP        &kp END        &none        &kp C_VOL_DN
+&sl SYMBOL    &none         &none      &none       &none       &none                 &kp PG_DN      &kp LC(LEFT)   &kp DOWN      &kp LC(RIGHT)  &none        &kp C_MUTE
+&kp GRAVE     &kp TILDE2    &none      &none       &none       &none                 &kp INS        &none          &kp LBRC      &kp RBRC       &kp FSLH     &kp ASTRK 
+                                         &kp NON_US_HASH       &kp TILDE2
+                                               &kp COLON       &kp SEMI
+                                                                                     &kp N3         &kp N4
+                                                                                     &kp N5         &kp N6
+                                                   &kp N7      &kp N8
+                                                   &kp N9      &kp UNDER
+                                                                                     &kp EQUAL      &kp EXCL
+									             &kp LBKT       &kp RBKT
             >;
         };
 
-        nav2_layer {
+	SYMBOL {
             bindings = <
-                &kp SEND_W_TO_1        &kp SEND_W_TO_2        &kp SEND_W_TO_3       &kp SEND_W_TO_4          &kp SEND_W_TO_5       &kp SEND_W_TO_6     &kp SEND_W_TO_7     &kp SEND_W_TO_8     &kp SEND_W_TO_9          &none
-                &none   &none   &none   &none      &none                   &kp F1  &kp F2 &kp F3  &kp F4  &kp F5 
-                &none   &none   &none   &none                 &none                       &kp F6 &kp F7 &kp F8  &kp F9  &kp F10 
-                                                        &none     &none       &kp F11  &kp F12
-                                                &none   &none   &none                 &none   &none   &none 
-                                                &none   &none   &none                 &none   &none   &none 
-                
+&kp F1         &kp F2      &kp F3     &kp F4     &kp F5     &kp F6                   &kp F7        &kp F8       &kp F9       &kp F10       &kp F11      &kp F12
+&bt BT_CLR     &kp N1      &kp N2     &kp N3     &kp N4     &kp N5                   &kp N6        &kp N7       &kp N8       &kp N9        &kp N0       &kp N0
+&bt BT_NXT     &kp Q       &kp W      &kp E      &kp R      &kp T                    &kp Y         &kp U        &kp I        &kp O         &kp P        &kp P
+&bt BT_PRV     &kp N1      &kp N2     &kp N3     &kp N4     &kp N5                   &kp N6        &kp N7       &kp N8       &kp N9        &kp N0       &kp L
+&kp LBKT       &kp Z       &kp X      &kp C      &kp V      &kp B                    &kp N         &kp M        &kp M        &kp M         &kp M        &kp M
+                                                 &kp N1     &kp N2
+                                                 &kp N3     &kp N4
+                                                                                     &kp N1        &kp N2
+                                                                                     &kp N3        &kp N4
+                                                 &kp N5     &kp N6
+                                                 &kp N7     &kp N8
+                                                                                     &kp N9        &kp N0
+                                                                                     &kp F11       &kp F12
             >;
-        };
+        };        
     };
 };
-
-
-   
-   
-        //other_layer {
-           // bindings = <
-             //   &none     &none     &none      &none          &none       &none           &kp C_PREV         &kp C_PLAY_PAUSE      &kp C_NEXT     &none
-               // &none     &none     &none      &none  &none     &kp C_MUTE           &kp C_VOLUME_DOWN         &kp   C_VOLUME_UP    &none     &none
- //               &none     &none     &none      &none          &none       &none           &none       &kp  C_BRIGHTNESS_DEC     &kp    C_BRIGHTNESS_INC  &none
-   //                                               &none          &none       &none           &none
-     //       >;
-       // };
